@@ -43,7 +43,7 @@ block content
                                                       month= "-0" + month
                                                     else 
                                                       month="-"+month
-                                                   year= "-" +year + " Data de criação do recurso: " + recurso.dataCriacao
+                                                    year= "-" +year + " Data de criação do recurso: " + recurso.dataCriacao
                          
                             ul="Autor: " + recurso.autor
                             ul="Titulo: " +recurso.titulo +" Subtitulo: " + recurso.subtitulo
@@ -104,5 +104,4 @@ block content
                                                           button.w3-button(class="fas fa-trash" type='button'  onclick="deleteComent('"+ recurso._id+"','"+comentario._id+"')")
                                                 div(class="modal-footer" )
                                                 button(type="button" class="btn btn-default" data-dismiss="modal") Close
-                        th 
-                          buttoni.w3-btn(class="fas fa-trash" type='button' onclick="deletepost('"+recurso._id+"')")
+                        
