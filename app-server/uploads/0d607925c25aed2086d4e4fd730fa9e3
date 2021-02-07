@@ -1,0 +1,6 @@
+
+poema{display: block;margin:48px;}
+titulo{display: block;font-size: 24pt;font-weight: bold;}
+quadra, terceto, verso{display: block;}
+nome {color: red;}
+local {color: rebeccapurple;}

@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  .w3-container.w3-sand.w3-auto
+    .w3-card-4.w3-pale-yellow
+      header.w3-margin-left
+        h2.tt Registo de utilizador:
+      .w3-container.w3-pale-yellow
+        form.w3-container(action='/registo' method='POST' )
+            label Nome:
+            input.w3-input.w3-pale-yellow.w3-margin-bottom(type="text" name="name")
+            label Username*:
+            input.w3-input.w3-pale-yellow.w3-margin-bottom(type="text" name="username")
+            label Password*:
+            input.w3-input.w3-pale-yellow.w3-margin-bottom(type="password" name="password")
+            label Filiação  (estudante, docente, curso, departamento, ...)*:
+            input.w3-input.w3-pale-yellow.w3-margin-bottom(type="text" name="filiacao")
+            label Nivel*:
+            .w3-text-blue-grey 
+            
+            input(type='radio' name='level' value='producer')
+            |  Producer
+            br
+            input(type='radio' name='level' value='consumer')
+            |  Consumer
+            input.w3-input.w3-pale-yellow(disabled="disabled")
+
+            p *: campo obrigatório
+            input.w3-btn.w3-margin-bottom(type='submit' value='Enviar')
+      
+        if (username == "username")
+            div(class="alert")
+              span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+              strong Falta preencher o campo username 
+        if (pass == "pass")
+            div(class="alert")
+              span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+              strong Falta preencher o campo password
+        if (level == "level")
+            div(class="alert")
+              span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+              strong Falta preencher o campo nivel
+        if (filiacao == "filiacao")
+            div(class="alert")
+              span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+              strong Falta preencher o campo filiação

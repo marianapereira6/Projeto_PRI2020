@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .w3-container.w3-sand.w3-auto
+    .w3-card-4.w3-pale-yellow.inicio
+      div.botao.w3-margin
+        h2.tt Lista de Users 🐯
+        
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.w3-margin-a.minha
+              a(href='/feed') Feed
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+                a(href='/addfiles/') Adicionar um recurso
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+              a(href='/logout') Logout
+      .w3-container.w3-pale-yellow
+         table.w3-table
+          each recurso in lista
+                    tr  
+                      th 
+                      th
+                      th  
+                      th
+                      th 
+                      th  
+                        ul="Nome " + recurso.name                                   
+                        ul="Username: " + recurso.username
+                        ul="Filiação: " +recurso.filiacao 
+                        ul="Nivel: " +recurso.level  
+                        th 
+                          buttoni.w3-btn(class="fas fa-trash" type='button' onclick="deleteperfil('"+recurso._id+"')")
+
+                        
+                            
+          

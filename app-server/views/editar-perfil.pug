@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    .w3-container.w3-sand.w3-auto
+        .w3-card-4.w3-pale-yellow
+            header.w3-container.w3-margin-top
+                h3 Editar Perfil
+            .w3-container
+                form(action=`/perfil/editar`, method='POST')
+                    label
+                        b Nome
+                    input.w3-pale-yellow.w3-input.w3-margin-bottom(type="text", name="name", value= user.name)
+                    label
+                        b Username
+                    input.w3-pale-yellow.w3-input.w3-margin-bottom(type="text", name="username", value= user.username)
+                    label 
+                        b Password:
+                    input.w3-pale-yellow.w3-input(type="password" name="password", value= user.password )
+                    label
+                        b Filiação
+                    input.w3-pale-yellow.w3-input.w3-margin-bottom(type="text", name="filiacao", value= user.filiacao)  
+                     
+                    button.w3-button.w3-pale-yellow.w3-border.w3-margin-top.w3-margin-bottom(type="submit", value="Guardar") Guardar
+                         

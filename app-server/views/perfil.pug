@@ -1,0 +1,140 @@
+extends layout
+
+block content
+  .w3-container.w3-sand.w3-auto
+    .w3-card-4.w3-pale-yellow.inicio
+      div.botao.w3-margin
+        h2.tt Perfil 🐯
+        
+          if (user.level == "admin")
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.w3-margin-admin.minha
+              a(href='/feed') Feed
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+                a(href='/addfiles/') Adicionar um recurso
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+                a(href='/users') Lista de users
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+              a(href='/logout') Logout
+          if (user.level == "producer")
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.w3-margin-pro.minha
+              a(href='/feed') Feed
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+                a(href='/addfiles/') Adicionar um recurso
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+              a(href='/logout') Logout
+          if (user.level == "consumer")
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.w3-margin-con.minha
+              a(href='/feed') Feed
+            button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+              a(href='/logout') Logout
+      .w3-container.w3-pale-yellow
+        label
+          b Nome:
+        input.w3-pale-yellow.w3-input.w3-margin-bottom(disabled="disabled", name="name", value= user.name)  
+        label
+          b Username:
+        input.w3-pale-yellow.w3-input.w3-margin-bottom(disabled="disabled", name="name", value= user.username)
+        label
+          b Nivel:
+        input.w3-pale-yellow.w3-input.w3-margin-bottom(disabled="disabled", name="name", value= user.level)
+        label
+          b Filiação:
+        input.w3-pale-yellow.w3-input.w3-margin-bottom(disabled="disabled", name="name", value= user.filiacao)                
+        button.w3-button.w3-pale-yellow.w3-border.w3-margin-top.w3-margin-bottom
+            a(href='/perfil/editar') Editar
+        
+        table.w3-table
+          each recurso in recursos
+                    tr  
+                      th 
+                      th
+                      th  
+                      th
+                      th 
+                      th
+                      th  
+                      th 
+                      th
+                      th  
+                      th
+                        ul="Data do post: "  
+                                          - var today2 = new Date(recurso.data);
+                                          - var dayNum2 = today2.getDate(); 
+                                          - var month2 = today2.getMonth();
+                                          - var year2 = today2.getFullYear();
+                                            if (dayNum2<10) 
+                                              dayNum2= "0" + dayNum2
+                                            else 
+                                              dayNum2=dayNum2
+                                            if (month2<10) 
+                                              month2= "-0" + month2
+                                            else 
+                                              month2="-"+month2
+                                            year2= "-" +year2 + " Data de criação do recurso: " + recurso.dataCriacao
+                         
+                                                              
+                        ul="Autor: " + recurso.autor
+                        if (recurso.subtitulo != null)
+                          ul="Titulo: " +recurso.titulo + " Subtitulo: " + recurso.subtitulo
+                        else 
+                          ul="Titulo: " +recurso.titulo
+                        ul="Tema: " +recurso.tema  + " Tipo: " +recurso.tipo
+                        if(recurso.descricao != null)
+                          ul="Descrição: " +recurso.descricao  
+                        ul= "Ficheiro: "
+                           each file in recurso.files
+                            a.background-hover.rounded(href='../ficheiros/'+file.name  target="_blank") #{file.originalName}
+                          
+                              ul
+                                a(href='../ficheiros/'+file.name)
+                                img.image-cover(src="../ficheiros/"+file.name style='max-width:500px; max-height:500px;' target="_blank")
+                      th 
+                          button.w3-button(class="fas fa-star" type='button' onclick="incrementaStar('"+recurso._id+"')")= recurso.stars.numero
+                      th
+                          div.tamanho
+                                    .w3-container(style= "overflow:auto")
+                                        a(data-toggle="modal" data-target=`#normalModal${recurso._id}` class="btn btn-default" style= "overflow:auto") Comments
+                                        // Modal content
+                                    div.tam(id=`normalModal${recurso._id}` class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style= "overflow:auto")
+                                        div(class="modal-dialog" role="document" style= "margin:0;")
+                                        div.tamanho.w3-pale-yellow(class="modal-content")
+                                            div(class="modal-body" )
+                                                form.w3-container(method='POST' action=`/comentar/${recurso._id}` )
+                                                  p Novo Comentário
+                                                  input.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="text")
+                                                  input.w3-btn.w3-pale-yellow.w3-margin-bottom(type='submit' value='Comentar')
+                                                table.w3-table(style= "overflow:auto")
+                                                  
+                                                    each comentario in recurso.comentarios.reverse()
+                                                      tr
+                                                        th
+                                                          ul="Data:  "  
+                                                                       - var today = new Date(comentario.data);
+                                                                       - var dayNum = today.getDate(); 
+                                                                       - var month = today.getMonth();
+                                                                       - var year = today.getFullYear();
+                                                                          if (dayNum<10) 
+                                                                            dayNum= "0" + dayNum
+                                                                          else 
+                                                                            dayNum=dayNum
+                                                                          if (month<10) 
+                                                                            month= "-0" + month
+                                                                          else 
+                                                                            month="-"+month
+                                                                          year= "-" +year
+                                                                                        
+                                                          ul="Autor:" + comentario.user_id
+                                                          ul="Comentario: " +comentario.text
+                                                        th
+                                                          button.w3-button(class="fas fa-star" type='button' onclick="addstarComent('"+ recurso._id+"','"+comentario._id+"')")= comentario.stars.numero
+                                                        th 
+                                                          button.w3-button(class="fas fa-trash" type='button'  onclick="deleteComent('"+ recurso._id+"','"+comentario._id+"')")
+                                                                  
+                                                div(class="modal-footer")
+                                                button(type="button" class="btn btn-default" data-dismiss="modal") Close
+                                  
+                                        
+                      th 
+                          buttoni.w3-btn(class="fas fa-trash" type='button' onclick="deletepost('"+recurso._id+"')")
+                            
+          

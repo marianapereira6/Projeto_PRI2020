@@ -1,0 +1,81 @@
+extends layout
+
+block content 
+  .w3-container.w3-sand.w3-auto
+    .w3-card-4.w3-pale-yellow
+      div.botao.w3-margin
+        h2.tt Nova Publicação 🐯
+        
+          button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.w3-margin-botao.minha
+            a(href='/perfil/') Perfil
+          button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+            a(href='/feed') Feed
+          button.w3-button.w3-pale-yellow.w3-margin-top.w3-margin-bottom.minha
+            a(href='/logout') Logout
+      .w3-container.w3-pale-yellow
+        form.w3-container(method='POST' action=`/files` enctype='multipart/form-data' )
+            label Título*:
+            input.w3-pale-yello.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="titulo")
+            label Subtítulo:
+            input.w3-pale-yello.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="subtitulo")
+            label Tema*:
+            input.w3-pale-yello.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="tema")
+            label Tipo*:
+            input.w3-pale-yello.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="tipo")
+            label Data de Criação* (dd-mm-yyyy):
+            input.w3-pale-yello.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="dataCriacao")
+            label Descrição:
+            input.w3-pale-yello.w3-input.w3-border.w3-light-grey.w3-margin-bottom(type="text" name="descricao")
+            label Visibilidade*:
+            
+            .w3-text-blue-grey 
+            
+            input(type='radio' name='visibilidade' value='producer')
+            |  Producer
+            br
+            input(type='radio' name='visibilidade' value='consumer')
+            |  Consumer
+            
+            
+            div(id="adiciona")
+              input.w3-btn(type="button" value="+" onclick="addImage();" src="/aux.js")
+              input.w3-input(type='file' name='myFile')
+              
+            
+            p.w3-margin-top *: campo obrigatório   
+            input.w3-btn.w3-margin-bottom(type='submit' value='Submit')
+          
+
+        if (titulo == "titulo")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Falta preencher o campo título  
+        if (tema == "tema")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Falta preencher o campo tema  
+        if (tipo == "tipo")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Falta preencher o campo tipo 
+        if (data == "data")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Falta preencher o campo data de criação 
+        if (d == "d")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Formato da data incorreto (dd-mm-yyyy)
+        if (visibilidade == "visibilidade")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Falta preencher o campo visibilidade
+        if (file == "file")
+          div(class="alert")
+            span(class="closebtn" onclick="this.parentElement.style.display='none';") &times;
+            strong Falta preencher o campo file
+        
+
+
+            
+

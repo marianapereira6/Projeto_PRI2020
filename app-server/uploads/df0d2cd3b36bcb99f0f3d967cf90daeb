@@ -1,0 +1,27 @@
+
+CnE : RAs CPROGs ALs  Questoes
+    ;
+
+RAs : RA (',' RA)*
+    ;
+
+CPROGs : CPROG (',' CPROG)*
+       ;
+
+ALs : AL (',' AL)*
+    ;
+
+RA : id_RA desc idadeIdeal CARACs 
+   ;
+
+Treina : id_RA id_CProg 
+       ;
+
+AL : id_AL idade caracteristicas
+   ;
+
+CProg : id_CProg nome dificuldade
+      ;
+
+CARACs : carac (',' carac)*
+       ;

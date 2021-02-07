@@ -1,0 +1,84 @@
+-> um recurso de aprendizagem ajuda um professor no ensino de um conceito de programação a um aluno.
+-> cada recurso de aprendizagem explora diversas caracteristicas emocionais e de aprendizagem que variam de aluno para aluno.
+-> cada aluno tem diversascaracteristicas emocionais/sociais que interferem na aprendizagem.
+-> o objetivo será atribuir a cada aluno o recurso de aprendizagem mais adequado às suas caracteristicas.
+-> um recurso pode ser por exemplo tutoriais, videos,  fichas, etc.
+
+(únicas caracteristicas que acho que devemos utilizar) : autonomia, interesse, persistência, empenho
+do género:
+
+
+Caracteristicas: (são avaliadas entre 1-10)
+[autonomia: , interesse: , persistência: , empenho:]
+
+Alunos: [{0, João, 19, Intermédio, [9, 9, 9, 5]},
+	 {1, Júlia, 13, Iniciante, [4, 5, 6, 3]},
+	 {2, Luís, 22, Intermédio, [7, 6, 8, 8]},
+	 {3, Manuel, 20, Avançado, [9, 9, 9, 9]},
+	 {4, Carla, 16, Iniciante, [2, 6, 7, 2]}]
+
+
+idade_ideal : tuplo com idade minima e idade máxima
+
+Recursos: [
+	{0, "Tutorial", (12,16), ["programação funcional", "iniciação à programação"], [4, 4, 4, 4]}]
+
+
+-> Depois para isto dar resultar é só comparar os valores das características e das idades.
+
+
+
+Codigo que vamos usar quando tivermos as estruturas diversascaracteristicas
+
+{
+                $ra = new ArrayList<String>();
+                 if ($recurso.idade1 >= $idade_aluno && $recurso.idade2 >= $idade_aluno){
+                   int a= 0;
+                   for( int i = 0; i <4; i++){
+                     if($recurso.crs[i] == $caracs[i] )
+                       i++;
+                   }
+                   
+                   if ( a >= 2 ) $ra.add(recurso);
+                }
+}
+
+
+{
+                 if ($recurso.idade1 >= $idade_aluno && $recurso.idade2 >= $aluno.idade_aluno) {
+                   int a= 0;
+                   for( int i = 0; i <4; i++){
+                     if($recurso.crs[i] == $aluno.carac[i] )
+                       i++;
+                   }
+                   if ( a >= 2 ) $ra.add(recurso);
+                }
+               }
+
+
+
+
+
+
+
+
+{desenvolvimento web=[Recurso de id 1, de descricao Palestra, com uma idade ideal entre 17 e 23, com um nivel de caracteristicas [7, 7, 8, 6]},
+ Recurso de id 1, de descricao Palestra, com uma idade ideal entre 17 e 23, com um nivel de caracteristicas [7, 7, 8, 6]}], 
+iniciacao a programacao=[Recurso de id 0, de descricao Tutorial, com uma idade ideal entre 12 e 16, com um nivel de caracteristicas [4, 4, 4, 4]}],
+ programacao funcional=[Recurso de id 0, de descricao Tutorial, com uma idade ideal entre 12 e 16, com um nivel de caracteristicas [4, 4, 4, 4]}]}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

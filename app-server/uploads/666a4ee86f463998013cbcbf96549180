@@ -1,0 +1,60 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class teste {
+    
+    public static void main(String[] args) throws IOException {
+        HashMap<String,ArrayList<String>> hash= new HashMap<String, ArrayList<String>>();
+        ArrayList<String> con = new ArrayList<String>();
+        con.add("w");
+        con.add("r");
+
+        
+        for(String i : con){
+            ArrayList<String> t = new ArrayList<String>();
+            String qq = "Hello";
+            t.add(qq);
+            hash.put(i, t);
+        }
+
+        System.out.println(hash);
+
+        String qq2 = "hello2";
+        ArrayList<String> t2 = new ArrayList<String>();
+        t2.add("w");
+        t2.add("s");
+        HashMap<String,ArrayList<String>> hash1= hash;
+        System.out.println("S1" +hash1);
+
+        for(String i : t2){
+            System.out.println("i " +i);
+
+            if(hash1.containsKey(i) == false ){
+                hash1.put(i, new ArrayList<String>()); 
+                
+            }
+           
+            ArrayList<String> ii = hash1.get(i) ;
+            ii.add(qq2); 
+            System.out.println("ii " +ii);
+        }
+
+        for(String i : t2){
+            System.out.println("i " +i);
+
+            if(hash1.containsKey(i) == false ){
+                hash1.put(i, new ArrayList<String>()); 
+                
+            }
+           
+            ArrayList<String> ii = hash1.get(i) ;
+            ii.add("qq2"); 
+            System.out.println("ii " +ii);
+        }
+        
+        System.out.println("S " +hash1);
+    }
+}
+
+
